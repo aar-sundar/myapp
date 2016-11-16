@@ -1,0 +1,50 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.2.RELEASE'
+	}
+	repositories{
+		maven { url "http://repo.spring.io/libs-snapshot" }
+		mavenLocal()
+	}
+	dependencies{
+		 classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'	
+
+repositories {
+	mavenCentral()
+	 maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+	compile "io.springfox:springfox-swagger2:2.6.1"
+	compile "io.springfox:springfox-swagger-ui:2.6.1"
+	compile "org.springframework.boot:spring-boot-starter-data-mongodb"
+	compile "org.springframework.boot:spring-boot-starter-thymeleaf"
+	//compile "org.apache.commons:commons-lang3:3.4"
+	compile "org.apache.httpcomponents:httpclient:4.2.6"
+	compile "com.googlecode.json-simple:json-simple:1.1"
+	//compile "org.springframework.boot:spring-boot-devtools"
+	//compile "org.springframework.boot:gs-serving-web-content:0.1.0"
+	compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+	//compile("org.springframework.boot:spring-boot-starter-security:${springBootVersion}")
+	//compile("org.springframework.boot:spring-boot-starter-actuator")
+	//compile("org.springframework.boot:spring-boot-starter-parent:${springBootVersion}")
+	testCompile("junit:junit")
+}
+
+jar {
+    baseName = 'getting-started'
+    version =  '0.1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}

@@ -1,0 +1,11 @@
+info:
+  description: "Service for managing emp details"
+  apiDocumentation: "TBD"
+
+server:
+  port: 8080
+
+#spring:
+  #data:
+    #mongodb:
+      #database: emp
