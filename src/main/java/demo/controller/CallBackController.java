@@ -1,7 +1,14 @@
 package demo.controller;
 
 import com.google.common.collect.ImmutableMap;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
@@ -12,6 +19,8 @@ import org.springframework.expression.ParseException;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
@@ -23,7 +32,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.springframework.http.RequestEntity.post;
@@ -72,13 +83,30 @@ public class CallBackController {
            // String uri = "https://accounts.google.com/o/oauth2/token";
             //String uri = "https://www.googleapis.com/oauth2/v4/token";
             String uri = "https://www.googleapis.com/oauth2/v4/token";
+            String tokenUri = "https://accounts.google.com/o/oauth2/token";
+            String callbackUri = "http://localhost:8080/callback";
+            MultiValueMap<String, String> mvm = new LinkedMultiValueMap<String, String>();
+            mvm.add("client_id", clientId);
+            mvm.add("client_secret", clientSecret);
+            mvm.add("grant_type", "authorization_code");
+            mvm.add("redirect_uri", callbackUri);
+            //mvm.add("code", requestToken);
 
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Content-Type", MediaType.APPLICATION_JSON.toString());
-            headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+            //headers.add("Content-Type", MediaType.APPLICATION_JSON.toString());
+            //headers.add("Accept", MediaType.APPLICATION_JSON.toString());
+            //headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            //headers.add("Accept", "application/json");
+            //headers.add("Content-Type", "application/json");
+            //HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(mvm, headers);
+            //String body  = restTemplate.exchange(tokenUri, HttpMethod.POST, new HttpEntity<>(entityRequest), String.class).getBody();
+            String body = null;
+            try{
+                 body = getAccessToken(code);
+            }catch (Exception e){
 
-            //String body  = restTemplate.exchange(uri, HttpMethod.POST, new HttpEntity<>(entityRequest), String.class).getBody();
-            String body = restTemplate.postForObject(uri,new HttpEntity<>(entityRequest, headers), String.class);
+            }
+            //restTemplate.postForObject(uri,requestEntity, String.class);
 
 
             JSONObject jsonObject = null;
@@ -99,5 +127,26 @@ public class CallBackController {
            // }
             response.sendRedirect("/dashboard");
         }
+    }
+
+    private String getAccessToken(String code) throws Exception{
+
+        String uri = "https://www.googleapis.com/oauth2/v4/token";
+
+
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost(uri);
+
+        String callbackUri = "http://localhost:8080/callback";
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+        nameValuePairs.add(new BasicNameValuePair("grant_type", "authorization_code"));
+        nameValuePairs.add(new BasicNameValuePair("redirect_uri", callbackUri));
+        nameValuePairs.add(new BasicNameValuePair("client_id", clientId));
+        nameValuePairs.add(new BasicNameValuePair("client_secret", clientSecret));
+        nameValuePairs.add(new BasicNameValuePair("code", code));
+
+        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        HttpResponse response = httpclient.execute(httppost);
+        return EntityUtils.toString(response.getEntity());
     }
 }

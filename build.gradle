@@ -31,6 +31,7 @@ dependencies {
 	//compile "org.apache.commons:commons-lang3:3.4"
 	compile "org.apache.httpcomponents:httpclient:4.2.6"
 	compile "com.googlecode.json-simple:json-simple:1.1"
+	compile "com.google.code.gson:gson:1.7.1"
 	//compile "org.springframework.boot:spring-boot-devtools"
 	//compile "org.springframework.boot:gs-serving-web-content:0.1.0"
 	compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
