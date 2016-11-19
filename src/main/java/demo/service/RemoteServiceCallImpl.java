@@ -2,6 +2,7 @@ package demo.service;
 
 
 import demo.exception.InvalidRequestException;
+import demo.model.GoogleToken;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -40,10 +41,13 @@ public class RemoteServiceCallImpl implements RemoteServiceCall{
     @Value("${security.oauth2.client.callbackUri}")
     private String callbackUri;
 
+    @Value("${security.oauth2.client.authProviderCertUrl}")
+    private String authProviderCertUrl;
+
     private static final Logger LOG = LoggerFactory.getLogger(RemoteServiceCallImpl.class);
 
     @Override
-    public String authenticate(String code){
+    public GoogleToken authenticate(String code){
         try{
             return getAccessToken(doAuthenticate(code));
         }catch(Exception e){
@@ -52,17 +56,8 @@ public class RemoteServiceCallImpl implements RemoteServiceCall{
         }
     }
 
-    @Override
-    public void authorize(String accessToken){
-        LOG.info("Getting into authorize");
-        List<GrantedAuthority> grantedAuths = new ArrayList<>();
-        grantedAuths.add(new SimpleGrantedAuthority("USER"));
-        SecurityContextHolder.getContext().setAuthentication(
-                new UsernamePasswordAuthenticationToken("user", "password", grantedAuths));
-    }
-
-
-    private String getAccessToken(String body){
+    private GoogleToken getAccessToken(String body){
+        GoogleToken token = new GoogleToken();
         JSONObject jsonObject = null;
         LOG.error("response before json parse body={}", body);
         // get the access token from json and request info from Google
@@ -75,7 +70,13 @@ public class RemoteServiceCallImpl implements RemoteServiceCall{
         // google tokens expire after an hour, but since we requested offline access we can get a
         // new token without user involvement via the refresh token
         LOG.info("Json Object={}", jsonObject);
-        return (String) jsonObject.get("access_token");
+        token.setIdToken(jsonObject.get("id_token").toString());
+        token.setAccessToken(jsonObject.get("access_token").toString());
+        token.setRefreshToken(jsonObject.get("refresh_token").toString());
+        token.setTokenType(jsonObject.get("token_type").toString());
+        token.setExpiresIn(Integer.parseInt(jsonObject.get("expires_in").toString()));
+
+        return token;
     }
 
     private String doAuthenticate(String code) throws Exception{
@@ -89,6 +90,8 @@ public class RemoteServiceCallImpl implements RemoteServiceCall{
         nameValuePairs.add(new BasicNameValuePair("client_id", clientId));
         nameValuePairs.add(new BasicNameValuePair("client_secret", clientSecret));
         nameValuePairs.add(new BasicNameValuePair("code", code));
+        nameValuePairs.add(new BasicNameValuePair("auth_provider_x509_cert_url", authProviderCertUrl));
+
 
         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
         HttpResponse response = httpclient.execute(httppost);

@@ -18,6 +18,8 @@ apply plugin: 'spring-boot'
 repositories {
 	mavenCentral()
 	 maven { url "http://repo.spring.io/libs-snapshot" }
+	//maven { url "http://central.maven.org/maven2" }
+
 }
 
 sourceCompatibility = 1.8
@@ -32,6 +34,11 @@ dependencies {
 	compile "org.apache.httpcomponents:httpclient:4.2.6"
 	compile "com.googlecode.json-simple:json-simple:1.1"
 	compile "com.google.code.gson:gson:1.7.1"
+	compile "io.jsonwebtoken:jjwt:0.7.0"
+	compile "com.google.api-client:google-api-client:1.22.0"
+	compile "com.google.api-client:google-api-client-gson:1.22.0"
+	compile "com.google.apis:google-api-services-oauth2:v2-rev124-1.22.0"
+	//compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
 	//compile "org.springframework.security:spring-security-jwt:1.0.3"
 	//compile "org.springframework.boot:spring-boot-devtools"
 	//compile "org.springframework.boot:gs-serving-web-content:0.1.0"

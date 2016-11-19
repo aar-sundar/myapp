@@ -4,7 +4,7 @@ package demo.request;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
-public class EmployeeCreateRequest {
+public class UserCreateRequest {
 
     @NotEmpty(message = "Firstname should not be empty")
     private String firstName;
@@ -17,7 +17,7 @@ public class EmployeeCreateRequest {
         return email;
     }
 
-    public EmployeeCreateRequest setEmail(String email) {
+    public UserCreateRequest setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -26,7 +26,7 @@ public class EmployeeCreateRequest {
         return firstName;
     }
 
-    public EmployeeCreateRequest setFirstName(String firstName) {
+    public UserCreateRequest setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -35,7 +35,7 @@ public class EmployeeCreateRequest {
         return lastName;
     }
 
-    public EmployeeCreateRequest setLastName(String lastName) {
+    public UserCreateRequest setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }

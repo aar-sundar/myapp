@@ -1,9 +1,10 @@
 package demo.service;
 
 
+import demo.model.GoogleToken;
+
 public interface RemoteServiceCall {
 
-    String authenticate(String code);
+    GoogleToken authenticate(String code);
 
-    void authorize(String token);
 }

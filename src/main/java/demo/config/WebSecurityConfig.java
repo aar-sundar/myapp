@@ -15,15 +15,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home","/callback","/logout").permitAll()
+                .antMatchers("/", "/home","/callback", "/logout", "/admin").permitAll()
                 .anyRequest().authenticated()
-                .and()
+                .and().csrf().disable()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
                 .permitAll();
+
     }
 
     @Autowired

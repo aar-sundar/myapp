@@ -17,6 +17,7 @@ security:
       clientSecret: D1_heaIzRYJSCHwu4Ubahlki
       accessTokenUri: https://www.googleapis.com/oauth2/v4/token
       userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
+      authProviderCertUrl: https://www.googleapis.com/oauth2/v1/certs
       callbackUri: http://localhost:8080/callback
       tokenName: oauth_token
       authenticationScheme: query
@@ -26,4 +27,5 @@ security:
       accessType: offline
       approvalPrompt: force
       state: sessionId
+      privateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDmuTRzicpdvVp9\nndpvdqw4v29SITk9B29nyi5csYCh+sryDGNL8VK7kzvURMnKR0w0d8aNETHxSrlh\nIMlD1soa8kuIZRUclm0ZYZkA8iic0QnXOi7LUctkvieN/eG4EwDF3kN7N3q5eZ69\nmQtlPLUnMIIScEfG1qXeeDzQ0l+sktqUaHqVNhbgIxq6nIEwlnQ+rLehaPFvw3NX\n09OKheKlzjFLPeXXJzAUGqysQJVJDTQ4TdGT+xov+LKYH+ZV/SFO6TTEzb1o1XIk\nLE2bgmBYFFaKpg2ppy4ZQxcNdsXrgzECaIkRAW034NTFqJZfHZ4i9ZFwD/xY9wtK\nXJSSFf8BAgMBAAECggEBAIs40petW7l42zPVnsuHtqB/k7LhbWKQK/9bFuLEETSs\n2u134CshMaUSURXjdEhlAWzfoaXZ7GMHjhk36XrQDyB3eHCTXkvj0W1xYRwbA7qs\nwN1otHfnoW3m+INL4XprrRm45sthTOLCqrEJusCaA03kjXiG3Cj1uR0nPLtdVnIQ\n/dvsOx3gOb5446Aw/LnSwkhLJ6xq5Tf4AumFBfP5Y6iwFWeJjGNdkEYhO+Uwcewk\nBk5ofAMzKbm2RF0NffjUYkt7UB6LW8xBUTNVYccqweh/r3g9bjQMb+xLAijmQ8YU\n+fHLchs9vxDM7gqQ9CPZD6CYNLk/2WjN7u40nfyIYYECgYEA/SnkvgskHTHv4na1\n2UKp1jNUJkpw64N31Yw2k35eynoBGshmcOijDmCFMzfrieWnS5wcaYJVMP0irbBs\nX3DVoUTkdP7nYFogJwwual/KbA32xTSu1pclJN65KC70olDcfJtc83uzlzjONFrb\nQE822FJ5rP3uOB78pdVV4MrM1lkCgYEA6U7zMKWZhPWPPv2bqUvo1g8XXftg4gCq\neRSzQB5i4sOyRjJ5R/lXEM7GkbA4+zNnckkA9NE3amqZO5WeWh9ciVlO5hwhQcfe\nQtD/9wM9kp9fsB/G4Zzky6lEnListEwE/0UM7nJV1cxzQdfPF6cTP7ZOagXkRvXk\n9TgZzDpRKOkCgYAzTqQ/J77f89jsCqb8KxiEgs6RHBEaigBlVQ9SgQ/w9Rz4Mpkg\nVOWG6mTUZobj4ZkwJ6lScMmXLhYzIUg1Z4bEMlQiqe52ho1xnHRjtpotn/7dJLoy\nX1t1x3W7ARkvNDgbQNlrtyxEf4y665b3x5YT7VMfji8TTKRjb4MCFdfBsQKBgQC9\nNS7aS+JlxrOmFQxRTuOD/fcoW74lav7VdSktnbb6SlTgwvxCl365fcfhzPVZG0YQ\nlA33fVigr9SXUu56DicAqHHpAfUioNGqhE6hZ3pe12tFrW+f9ppCZILlSoudKG2B\nC+HB2u2rlsP+KOOlPfTJXbLYHvETb0WAbT/WtZCuSQKBgEr3/G5jbjH2y12C6Ud3\nFh7xLB5FbqPh4NlftKM2Ip2SFdvSNi5c4hnaLBduzaoU58fCmJO4IlTZwdNxwTmz\nmQppFz1Sjl/42HmhicWZ/zs+5E3HxI0LtJhtjqRrAcxgRoWSV9+y+GBjC75KVqXE\nLFt8pFbYL1HYOZGDGOmndRSU
 

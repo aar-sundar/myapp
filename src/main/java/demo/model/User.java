@@ -1,20 +1,40 @@
 package demo.model;
 
+import org.springframework.data.annotation.Id;
+
 
 public class User {
 
-    private String email;
-    private String userName;
-    private String role;
-
-    public String getUserName() {
-        return userName;
+    public String getId() {
+        return id;
     }
 
-    public User setUserName(String userName) {
-        this.userName = userName;
-        return this;
+    public void setId(String id) {
+        this.id = id;
     }
+
+    @Id
+    private String id;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    private String firstName;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    private String lastName;
 
     public String getEmail() {
         return email;
@@ -25,14 +45,10 @@ public class User {
         return this;
     }
 
-    public String getRole() {
-        return role;
+    private String email;
+
+
+    public String toString(){
+        return "id="+id+"; firstName="+firstName+"; lastName="+lastName;
     }
-
-    public User setRole(String role) {
-        this.role = role;
-        return this;
-    }
-
-
 }
