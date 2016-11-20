@@ -1,4 +1,4 @@
-package demo.model;
+package demo.model.security;
 
 
 public class TokenStatus {

@@ -1,6 +1,6 @@
 package demo.controller;
 
-import demo.model.User;
+import demo.model.user.User;
 import demo.request.UserCreateRequest;
 import demo.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -26,9 +26,9 @@ public class UserController {
 
     @ApiOperation(value = "", notes = "Creates an User record in DB")
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public ResponseEntity<String> createUser(@RequestBody UserCreateRequest request){
+    public ResponseEntity<String> createUser(@RequestBody User user){
         LOG.info("Calling createUser");
-        return new ResponseEntity<> (userService.createEmployee(request), HttpStatus.CREATED);
+        return new ResponseEntity<> (userService.createUser(user), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "", notes = "Get an User record in DB for a given Id")

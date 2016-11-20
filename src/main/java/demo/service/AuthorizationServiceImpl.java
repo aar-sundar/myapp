@@ -1,7 +1,7 @@
 package demo.service;
 
 import demo.exception.InvalidRequestException;
-import demo.model.GoogleToken;
+import demo.model.security.GoogleToken;
 import demo.util.GoogleTokenVerify;
 import demo.util.Utility;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import demo.model.User;
+import demo.model.user.User;
 
 @Service
 public class AuthorizationServiceImpl implements AuthorizationService {

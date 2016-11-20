@@ -8,15 +8,15 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.oauth2.Oauth2;
 import com.google.api.services.oauth2.model.Tokeninfo;
 import com.google.gson.Gson;
-import demo.model.GoogleToken;
-import demo.model.TokenStatus;
-import demo.model.User;
+import demo.model.security.GoogleToken;
+import demo.model.security.TokenStatus;
+import demo.model.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import demo.model.Checker;
+import demo.model.security.Checker;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
 package demo.config;
 
-import demo.model.User;
+import demo.model.user.User;
 import demo.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

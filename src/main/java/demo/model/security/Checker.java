@@ -1,4 +1,4 @@
-package demo.model;
+package demo.model.security;
 
 /*
  * Copyright 2013 Google Inc. All Rights Reserved.

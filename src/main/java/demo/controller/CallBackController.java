@@ -1,6 +1,6 @@
 package demo.controller;
 
-import demo.model.GoogleToken;
+import demo.model.security.GoogleToken;
 import demo.service.AuthorizationService;
 import demo.service.RemoteServiceCall;
 import org.slf4j.Logger;

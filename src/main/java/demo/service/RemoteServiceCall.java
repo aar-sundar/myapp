@@ -1,7 +1,7 @@
 package demo.service;
 
 
-import demo.model.GoogleToken;
+import demo.model.security.GoogleToken;
 
 public interface RemoteServiceCall {
 

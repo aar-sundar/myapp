@@ -3,7 +3,7 @@ package demo.service;
 import demo.exception.AlreadyFoundException;
 import demo.exception.InvalidRequestException;
 import demo.exception.NotFoundException;
-import demo.model.User;
+import demo.model.user.User;
 import demo.repository.UserRepository;
 import demo.request.UserCreateRequest;
 import demo.util.Utility;
@@ -25,19 +25,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String createEmployee(UserCreateRequest request) {
-        String email = request.getEmail();
+    public String createUser(User user) {
+        String email = user.getEmail();
         User userFound = findByEmail(email);
         if(userFound != null){
             throw new AlreadyFoundException("User with the email already available");
         }
-        User user = new User();
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setEmail(email);
-        User empCreated = userRepository.save(user);
-        LOG.info("User created successfully = {}", empCreated);
-        return empCreated.getId();
+        User userCreated = userRepository.save(user);
+        LOG.info("User created successfully = {}", userCreated);
+        return userCreated.getId();
     }
 
     @Override

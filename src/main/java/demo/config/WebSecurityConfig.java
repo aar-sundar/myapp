@@ -13,17 +13,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home","/callback", "/logout", "/admin").permitAll()
-                .anyRequest().authenticated()
-                .and().csrf().disable()
+                //.antMatchers("/", "/home","/callback","/logout").permitAll();
+                 .antMatchers("/*.*").permitAll();
+                /*.anyRequest().authenticated()
+                .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();
+                .permitAll();*/
 
     }
 

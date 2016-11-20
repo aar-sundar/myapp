@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @SpringBootApplication
-class EmployeeApplication {
+class Application {
 
 
 	@Bean
@@ -32,6 +32,6 @@ class EmployeeApplication {
 	}
 
 	public static void main(String args[]){
-		SpringApplication.run(EmployeeApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

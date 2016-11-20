@@ -1,9 +1,25 @@
-package demo.model;
+package demo.model.user;
 
 import org.springframework.data.annotation.Id;
 
 
 public class User {
+
+    @Id
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private UserDetail userDetail;
+
+    public UserDetail getUserDetail() {
+        return userDetail;
+    }
+
+    public User setUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
+        return this;
+    }
 
     public String getId() {
         return id;
@@ -13,9 +29,6 @@ public class User {
         this.id = id;
     }
 
-    @Id
-    private String id;
-
     public String getFirstName() {
         return firstName;
     }
@@ -24,8 +37,6 @@ public class User {
         this.firstName = firstName;
     }
 
-    private String firstName;
-
     public String getLastName() {
         return lastName;
     }
@@ -33,8 +44,6 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    private String lastName;
 
     public String getEmail() {
         return email;
@@ -45,10 +54,7 @@ public class User {
         return this;
     }
 
-    private String email;
-
-
     public String toString(){
-        return "id="+id+"; firstName="+firstName+"; lastName="+lastName;
+        return "id="+id+"; firstName="+firstName+"; lastName="+lastName + "; email="+email;
     }
 }
